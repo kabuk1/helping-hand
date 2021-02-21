@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 void main() {
   List<String> names = ["Emma", "William", "Sophia", "Noah"];
   List<double> distances = [0.5, 0.8, 1.0, 1.4];
-  runApp(MyApp(
+  runApp(FindHelper(
     items: List<ListItem>.generate(
-      names.length,
-      (i) => 
-          MessageItem("${names[i]}", "Distance ${distances[i]}"),
+      4,
+      (i) => MessageItem("${names[i]}", "Distance ${distances[i]}"),
     ),
   ));
 }
 
-class MyApp extends StatelessWidget {
+class FindHelper extends StatelessWidget {
   final List<ListItem> items;
 
-  MyApp({Key key, @required this.items}) : super(key: key);
+  FindHelper({Key key, @required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,40 +23,36 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            title, 
-            style: TextStyle(
-              fontSize: 40, 
-            )
-           ),
-          toolbarHeight: 60.0, 
-          backgroundColor: Colors.orange[400], 
-          leading: IconButton(
-            icon: const Icon(Icons.home, size: 40),
-            iconSize: 50,
-            tooltip: 'Go to Home Screen',
-            onPressed: () {},
+          appBar: AppBar(
+            title: Text(title,
+                style: TextStyle(
+                  fontSize: 40,
+                )),
+            toolbarHeight: 60.0,
+            backgroundColor: Colors.orange[400],
+            leading: IconButton(
+              icon: const Icon(Icons.home, size: 40),
+              iconSize: 50,
+              tooltip: 'Go to Home Screen',
+              onPressed: () {},
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.map, size: 40),
+                iconSize: 50,
+                tooltip: 'Map View',
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: const Icon(Icons.message, size: 40),
+                iconSize: 50,
+                tooltip: 'Messages',
+                onPressed: () {},
+              ),
+            ],
           ),
-          actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.map, size: 40),
-            iconSize: 50,
-            tooltip: 'Map View',
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: const Icon(Icons.message, size: 40),
-            iconSize: 50,
-            tooltip: 'Messages',
-            onPressed: () {},
-          ),
-        ],
-          
-          
-        ),
-        body: Container(
-            color: Colors.orange[300], 
+          body: Container(
+            color: Colors.orange[300],
             child: ListView.builder(
               // Let the ListView know how many items it needs to build.
               itemCount: items.length,
@@ -66,36 +61,23 @@ class MyApp extends StatelessWidget {
               itemBuilder: (context, index) {
                 final item = items[index];
 
-                return Column (
-                  children: <Widget>[
-                    ListTile(
+                return Column(children: <Widget>[
+                  ListTile(
                       title: item.buildTitle(context),
                       subtitle: item.buildSubtitle(context),
                       trailing: RaisedButton(
-                        child: 
-                          Text(
-                          "Message", 
-                            style: TextStyle(
-                              color: Colors.black,
-                            )
-                        ),
-                        onPressed: (){}, 
-                        color: Colors.orange[50]
-                      ),
-                      
-                      
-                      contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5)
-                    ), 
-                    Divider(
-                      thickness: 3
-                    ),
-                  ]
-                  
-                  );
+                          child: Text("Message",
+                              style: TextStyle(
+                                color: Colors.black,
+                              )),
+                          onPressed: () {},
+                          color: Colors.orange[50]),
+                      contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5)),
+                  Divider(thickness: 3),
+                ]);
               },
             ),
-          )
-      ),
+          )),
     );
   }
 }
@@ -116,17 +98,13 @@ class HeadingItem implements ListItem {
   HeadingItem(this.heading);
 
   Widget buildTitle(BuildContext context) {
-    return Text(
-      heading,
+    return Text(heading,
 //       style: Theme.of(context).textTheme.headline1,
-      style: TextStyle(
-          color: Colors.red, 
-          fontWeight: FontWeight.bold, 
-          fontSize: 20, 
-          letterSpacing: 0.5
-        )
-
-    );
+        style: TextStyle(
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            letterSpacing: 0.5));
   }
 
   Widget buildSubtitle(BuildContext context) => null;
@@ -139,23 +117,18 @@ class MessageItem implements ListItem {
 
   MessageItem(this.sender, this.body);
 
-  Widget buildTitle(BuildContext context){
-    return Text(
-      sender, 
-      style: TextStyle(
-          fontWeight: FontWeight.bold, 
-          fontSize: 50, 
-        )
-     );
+  Widget buildTitle(BuildContext context) {
+    return Text(sender,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 50,
+        ));
   }
 
-  Widget buildSubtitle(BuildContext context){
-    return Text(
-      body, 
-      style: TextStyle(
-          fontSize: 30, 
-        )
-     );
-    
+  Widget buildSubtitle(BuildContext context) {
+    return Text(body,
+        style: TextStyle(
+          fontSize: 30,
+        ));
   }
 }
