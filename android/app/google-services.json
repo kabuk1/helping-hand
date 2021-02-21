@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406195484621",
+    "project_id": "helping-hand-9b42d",
+    "storage_bucket": "helping-hand-9b42d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406195484621:android:95db5ed83dd8fd5e6cf684",
+        "android_client_info": {
+          "package_name": "com.pearlhack2021.helping_hand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406195484621-8qdap9dbvnglolc42o2ljit1i3k3deqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_Eeo2e4BcDofivWsr40SxWCyYKU6VkAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406195484621-8qdap9dbvnglolc42o2ljit1i3k3deqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
