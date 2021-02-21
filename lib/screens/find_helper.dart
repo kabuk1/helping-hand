@@ -32,7 +32,29 @@ class MyApp extends StatelessWidget {
             )
            ),
           toolbarHeight: 60.0, 
-          backgroundColor: Colors.orange[400]
+          backgroundColor: Colors.orange[400], 
+          leading: IconButton(
+            icon: const Icon(Icons.home, size: 40),
+            iconSize: 50,
+            tooltip: 'Go to Home Screen',
+            onPressed: () {},
+          ),
+          actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.map, size: 40),
+            iconSize: 50,
+            tooltip: 'Map View',
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.message, size: 40),
+            iconSize: 50,
+            tooltip: 'Messages',
+            onPressed: () {},
+          ),
+        ],
+          
+          
         ),
         body: Container(
             color: Colors.orange[300], 
@@ -49,13 +71,19 @@ class MyApp extends StatelessWidget {
                     ListTile(
                       title: item.buildTitle(context),
                       subtitle: item.buildSubtitle(context),
-                      trailing: Text(
-                        "Message", 
-                        style: TextStyle(
-                          fontSize: 30, 
-                          backgroundColor: Colors.orange[50]
-                        )
+                      trailing: RaisedButton(
+                        child: 
+                          Text(
+                          "Message", 
+                            style: TextStyle(
+                              color: Colors.black,
+                            )
+                        ),
+                        onPressed: (){}, 
+                        color: Colors.orange[50]
                       ),
+                      
+                      
                       contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5)
                     ), 
                     Divider(
